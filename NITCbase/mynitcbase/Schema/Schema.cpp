@@ -190,7 +190,7 @@ int Schema::deleteRel(char *relName) {
     return BlockAccess::deleteRelation(relName);
     // return the value returned by the above deleteRelation() call
 
-    /* the only that should be returned from deleteRelation() is E_RELNOTEXIST.
+    /* the only thing that should be returned from deleteRelation() is E_RELNOTEXIST.
        The deleteRelation call may return E_OUTOFBOUND from the call to
        loadBlockAndGetBufferPtr, but if your implementation so far has been
        correct, it should not reach that point. That error could only occur

@@ -1,0 +1,17 @@
+# VS Code
+.vscode/
+*/.vscode/
+
+# Build folders
+build/
+*/build/
+
+# Object files
+*.o
+
+# Binaries
+nitcbase
+nitcbase-debug
+
+# Logs
+*.log

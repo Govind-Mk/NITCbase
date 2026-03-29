@@ -137,7 +137,7 @@ OpenRelTable::~OpenRelTable() {
   // free all the memory that you allocated in the constructor
    for (int i = 2; i < MAX_OPEN; ++i) {
     if (!tableMetaInfo[i].free) {
-      OpenRelTable::closeRel(i);
+      OpenRelTable::closeRel(i); // we will implement this function later
     }
   }
   if(RelCacheTable::relCache[ATTRCAT_RELID]->dirty)
