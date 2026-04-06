@@ -5,6 +5,8 @@
 #include <cstdio>
 using namespace std;
 
+int comparisionCount=0;
+
 bool isNumber(char *str) {
   int len;
   float ignore;
@@ -130,8 +132,8 @@ int Algebra::select(char srcRel[ATTR_SIZE], char targetRel[ATTR_SIZE], char attr
     /* let attr_names[src_nAttrs][ATTR_SIZE] be a 2D array of type char
         (will store the attribute names of rel). */
     // let attr_types[src_nAttrs] be an array of type int
-    char attr_names[src_nAttrs][ATTR_SIZE];
-    int attr_types[src_nAttrs];
+  char attr_names[src_nAttrs][ATTR_SIZE];
+  int attr_types[src_nAttrs];
     /*iterate through 0 to src_nAttrs-1 :
         get the i'th attribute's AttrCatEntry using AttrCacheTable::getAttrCatEntry()
         fill the attr_names, attr_types arrays that we declared with the entries
@@ -156,7 +158,7 @@ int Algebra::select(char srcRel[ATTR_SIZE], char targetRel[ATTR_SIZE], char attr
        method and store the target relid */
     /* If opening fails, delete the target relation by calling Schema::deleteRel()
        and return the error value returned from openRel() */
-    if(targetRelId<0 || targetRelId>=MAX_OPEN)
+  if(targetRelId<0 || targetRelId>=MAX_OPEN)
     {
       Schema::deleteRel(targetRel);
       return targetRelId;
@@ -178,6 +180,8 @@ int Algebra::select(char srcRel[ATTR_SIZE], char targetRel[ATTR_SIZE], char attr
         first record.
     */
     RelCacheTable::resetSearchIndex(srcRelId);
+    AttrCacheTable::resetSearchIndex(srcRelId,attr);
+    comparisionCount=0;
     // AttrCacheTable::resetSearchIndex(/* fill arguments */);
 
     // read every record that satisfies the condition by repeatedly calling
@@ -202,6 +206,7 @@ int Algebra::select(char srcRel[ATTR_SIZE], char targetRel[ATTR_SIZE], char attr
 
     // Close the targetRel by calling closeRel() method of schema layer
     Schema::closeRel(targetRel);
+    printf("No of comparisions: %d\n", comparisionCount);
   return SUCCESS;
 }
 
