@@ -206,7 +206,7 @@ int Algebra::select(char srcRel[ATTR_SIZE], char targetRel[ATTR_SIZE], char attr
 
     // Close the targetRel by calling closeRel() method of schema layer
     Schema::closeRel(targetRel);
-    printf("No of comparisions: %d\n", comparisionCount);
+    //printf("No of comparisions: %d\n", comparisionCount);
   return SUCCESS;
 }
 
